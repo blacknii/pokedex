@@ -7,28 +7,35 @@ import {
   Typography,
   Chip,
 } from "@mui/material";
+import Modal from "./Modal";
+import { useState } from "react";
 
 const Pokemons = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+      <Modal open={open} handleOpen={handleOpen} />
       {DUMMY_DATA.pokedex.map((pokemon) => (
-        <Card key={pokemon.id} sx={{ width: 250, margin: 2 }}>
+        <Card
+          key={pokemon.id}
+          sx={{ width: 250, padding: 1, margin: 2, cursor: "pointer" }}
+          onClick={handleOpen}
+        >
           <CardMedia
             sx={{ height: 250 }}
             image={pokemon.img}
             title={pokemon.name}
           />
           <CardContent>
+            <Typography variant="subtitle1" component="div" color="GrayText">
+              #{pokemon.id}
+            </Typography>
             <Typography gutterBottom variant="h5" component="div">
               {pokemon.name}
-            </Typography>
-            <Typography
-              gutterBottom
-              variant="subtitle1"
-              component="div"
-              color="GrayText"
-            >
-              #{pokemon.id}
             </Typography>
             <Stack direction={"row"} gap={1}>
               {pokemon.types.map((type) => (
@@ -163,66 +170,6 @@ const DUMMY_DATA = {
       name: "raticate",
       img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/20.png",
       types: ["normal"],
-    },
-    {
-      id: 21,
-      name: "spearow",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/21.png",
-      types: ["normal", "flying"],
-    },
-    {
-      id: 22,
-      name: "fearow",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/22.png",
-      types: ["normal", "flying"],
-    },
-    {
-      id: 23,
-      name: "ekans",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/23.png",
-      types: ["poison"],
-    },
-    {
-      id: 24,
-      name: "arbok",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/24.png",
-      types: ["poison"],
-    },
-    {
-      id: 25,
-      name: "pikachu",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
-      types: ["electric"],
-    },
-    {
-      id: 26,
-      name: "raichu",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/26.png",
-      types: ["electric"],
-    },
-    {
-      id: 27,
-      name: "sandshrew",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/27.png",
-      types: ["ground"],
-    },
-    {
-      id: 28,
-      name: "sandslash",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/28.png",
-      types: ["ground"],
-    },
-    {
-      id: 29,
-      name: "nidoran-f",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/29.png",
-      types: ["poison"],
-    },
-    {
-      id: 30,
-      name: "nidorina",
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/30.png",
-      types: ["poison"],
     },
   ],
 };
