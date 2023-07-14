@@ -31,7 +31,7 @@ interface Pokemon {
 }
 
 const index = 0;
-const range = 30;
+const range = 20;
 const start = 0;
 const end = 100;
 const types: string[] = [];
@@ -125,6 +125,7 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
   );
 
   return response.data.data.pokemon_v2_pokemon.map((pokemon) => ({
+    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`,
     id: pokemon.id,
     name: pokemon.name,
     weight: pokemon.weight,

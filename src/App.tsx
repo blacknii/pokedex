@@ -4,12 +4,11 @@ import "./App.css";
 import { usePokemonsData } from "./hooks/usePokemonsData";
 import Generations from "./components/Generations";
 import Pokemons from "./components/Pokemons";
+import PokemonsSkeleton from "./components/PokemonsSkeleton";
 import Types from "./components/Types";
 
 function App() {
   const { isLoading, data } = usePokemonsData();
-
-  console.log({ isLoading, data });
 
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -18,7 +17,7 @@ function App() {
       </Typography>
       <Generations />
       <Types />
-      <Pokemons />
+      {isLoading ? <PokemonsSkeleton /> : <Pokemons data={data} />}
       <Pagination count={10} siblingCount={0} />
     </Stack>
   );
