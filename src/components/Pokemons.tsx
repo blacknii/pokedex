@@ -10,7 +10,21 @@ import {
 import Modal from "./Modal";
 import { useState } from "react";
 
-const Pokemons = ({ data }) => {
+interface Pokemon {
+  id: number;
+  name: string;
+  weight: number;
+  height: number;
+  types: string[];
+  generation: string;
+  img: string;
+}
+
+type PokemonProps = {
+  data: Pokemon[] | undefined;
+};
+
+const Pokemons = ({ data }: PokemonProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => {
     setOpen(!open);
@@ -20,7 +34,7 @@ const Pokemons = ({ data }) => {
     <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
       <Modal open={open} handleOpen={handleOpen} />
       {data &&
-        data.map((pokemon) => (
+        data.map((pokemon: Pokemon) => (
           <Card
             key={pokemon.id}
             sx={{ width: 250, padding: 1, margin: 2, cursor: "pointer" }}

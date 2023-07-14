@@ -28,6 +28,7 @@ interface Pokemon {
   height: number;
   types: string[];
   generation: string;
+  img: string;
 }
 
 const index = 0;
