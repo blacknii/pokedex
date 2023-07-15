@@ -37,7 +37,7 @@ const Pokemons = ({ data }: PokemonProps) => {
     generation: "Kanto",
   });
 
-  const handleOpen = (pokemon) => {
+  const handleOpen = (pokemon: Pokemon) => {
     setModalData(pokemon);
     setOpen(true);
   };

@@ -1,9 +1,18 @@
 import { Dialog, DialogContent, Typography } from "@mui/material";
-import { types } from "../data/types";
+// import { types } from "../data/types";
 
 type ModalProps = {
   open: boolean;
-  handleOpen: () => void;
+  handleClose: () => void;
+  modalData: {
+    img: string;
+    id: number;
+    name: string;
+    weight: number;
+    height: number;
+    types: string[];
+    generation: string;
+  };
 };
 
 const Modal = ({ open, handleClose, modalData }: ModalProps) => {

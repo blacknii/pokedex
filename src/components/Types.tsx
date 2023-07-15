@@ -1,7 +1,12 @@
 import { Box, Chip } from "@mui/material";
 import { types } from "../data/types";
 
-const Types = ({ selectedTypes, setSelectedTypes }) => {
+interface typesProps {
+  selectedTypes: string[];
+  setSelectedTypes: (newTypes: string[]) => void;
+}
+
+const Types = ({ selectedTypes, setSelectedTypes }: typesProps) => {
   const handleTypes = (newtype: string) => {
     console.log(selectedTypes);
     if (newtype === "all") {

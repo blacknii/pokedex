@@ -46,7 +46,7 @@ function App() {
         setSelectedTypes={setSelectedTypes}
       />
       <Pagination
-        count={Math.round(pageAmount / 20) + 1}
+        count={Math.ceil(pageAmount / 20)}
         page={page}
         onChange={handleChange}
       />
@@ -61,7 +61,7 @@ function App() {
         />
       )}
       <Pagination
-        count={Math.round(pageAmount / 20) + 1}
+        count={Math.ceil(pageAmount / 20)}
         page={page}
         onChange={handleChange}
       />
