@@ -62,19 +62,21 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
       (type) => type.pokemon_v2_type.name
     ),
     generation:
-      regions.find((gen) => pokemon.id >= gen.start && pokemon.id <= gen.end)
+      regions
+        .slice(1)
+        .find((gen) => pokemon.id >= gen.start && pokemon.id <= gen.end)
         ?.name || "Unknown",
   }));
 };
 
 export const usePokemonsData = (): {
   isLoading: boolean;
-  data: Pokemon[] | undefined;
+  rawData: Pokemon[] | undefined;
 } => {
-  const { isLoading, data } = useQuery<Pokemon[], Error>(
+  const { isLoading, data: rawData } = useQuery<Pokemon[], Error>(
     ["pokemons"],
     fetchPokemons
   );
 
-  return { isLoading, data };
+  return { isLoading, rawData };
 };

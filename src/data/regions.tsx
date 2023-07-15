@@ -1,5 +1,10 @@
 export const regions = [
   {
+    name: "All regions",
+    start: 1,
+    end: 1010,
+  },
+  {
     name: "Kanto",
     start: 1,
     end: 151,

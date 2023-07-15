@@ -1,16 +1,17 @@
 import { Dialog, DialogContent, Typography } from "@mui/material";
+import { types } from "../data/types";
 
 type ModalProps = {
   open: boolean;
   handleOpen: () => void;
 };
 
-const Modal = ({ open, handleOpen }: ModalProps) => {
+const Modal = ({ open, handleClose, modalData }: ModalProps) => {
   return (
     <>
       <Dialog
         open={open}
-        onClose={handleOpen}
+        onClose={handleClose}
         aria-labelledby="dialog-title"
         aria-describedby="dialog-description"
       >
@@ -19,29 +20,23 @@ const Modal = ({ open, handleOpen }: ModalProps) => {
             style={{
               width: "100%",
             }}
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png"
+            src={modalData.img}
           />
           <Typography>
-            <strong>Name</strong>: bulbasaur
+            <strong>Name</strong>: {modalData.name}
           </Typography>
           <Typography>
-            <strong>Types</strong>: grass poison
+            <strong>Types</strong>:{" "}
+            {modalData.types && modalData.types.join(", ")}
           </Typography>
           <Typography>
-            <strong>Generation</strong>: generation-i
+            <strong>Region</strong>: {modalData.generation}
           </Typography>
           <Typography>
-            <strong>Color</strong>: green
+            <strong>Height</strong>: {modalData.height}
           </Typography>
           <Typography>
-            <strong>Height</strong>: 7
-          </Typography>
-          <Typography>
-            <strong>Weight</strong>: 69
-          </Typography>
-          <Typography>
-            <strong>Info</strong>: A strange seed was planted on its back at
-            birth. The plant sprouts and grows with this POKéMON.
+            <strong>Weight</strong>: {modalData.weight}
           </Typography>
         </DialogContent>
       </Dialog>
