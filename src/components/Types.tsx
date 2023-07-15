@@ -28,16 +28,22 @@ const Types = ({ selectedTypes, setSelectedTypes }: typesProps) => {
 
   return (
     <Box>
-      {types.map((type) => (
-        <Chip
-          key={type.name}
-          label={type.name}
-          sx={{ margin: 0.4 }}
-          onClick={() => {
-            handleTypes(type.name);
-          }}
-        />
-      ))}
+      {types.map((type) => {
+        const color = selectedTypes.includes(type.name) ? "#69c3e9" : "e4e4e4";
+        return (
+          <Chip
+            key={type.name}
+            label={type.name}
+            sx={{
+              margin: 0.4,
+              backgroundColor: color,
+            }}
+            onClick={() => {
+              handleTypes(type.name);
+            }}
+          />
+        );
+      })}
     </Box>
   );
 };
