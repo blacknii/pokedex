@@ -5,8 +5,8 @@ const PokemonsSkeleton = () => {
     <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
       {Array(20)
         .fill(0)
-        .map((skielet: number) => (
-          <Card sx={{ width: 250, padding: 1, margin: 2 }} key={skielet}>
+        .map((_, i) => (
+          <Card sx={{ width: 250, padding: 1, margin: 2 }} key={i}>
             <Skeleton
               variant="rectangular"
               width={250}

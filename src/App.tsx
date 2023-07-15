@@ -17,7 +17,11 @@ function App() {
       </Typography>
       <Generations />
       <Types />
-      {isLoading ? <PokemonsSkeleton /> : <Pokemons data={data} />}
+      {isLoading ? (
+        <PokemonsSkeleton />
+      ) : (
+        <Pokemons data={data && data.slice(0, 20)} />
+      )}
       <Pagination count={10} siblingCount={0} />
     </Stack>
   );

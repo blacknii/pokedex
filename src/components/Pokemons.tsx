@@ -44,6 +44,7 @@ const Pokemons = ({ data }: PokemonProps) => {
               sx={{ height: 250 }}
               image={pokemon.img}
               title={pokemon.name}
+              src={pokemon.img}
             />
             <CardContent>
               <Typography variant="subtitle1" component="div" color="GrayText">
