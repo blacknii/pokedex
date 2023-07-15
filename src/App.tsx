@@ -40,10 +40,15 @@ function App() {
       <Typography component="h1" variant="h3">
         Pokedex
       </Typography>
-      <Generations setSelectedRegion={setSelectedRegion} />
+      <Generations
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+        setPage={setPage}
+      />
       <Types
         selectedTypes={selectedTypes}
         setSelectedTypes={setSelectedTypes}
+        setPage={setPage}
       />
       <Pagination
         count={Math.ceil(pageAmount / 20)}

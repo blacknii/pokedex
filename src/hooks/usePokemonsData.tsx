@@ -53,7 +53,7 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
   );
 
   return response.data.data.pokemon_v2_pokemon.map((pokemon) => ({
-    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`,
+    img: `https://img.pokemondb.net/sprites/home/normal/${pokemon.name}.png`,
     id: pokemon.id,
     name: pokemon.name,
     weight: pokemon.weight,
