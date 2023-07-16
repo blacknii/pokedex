@@ -33,19 +33,19 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: typesProps) => {
       {types.map((type) => {
         let color;
         if (selectedTypes.includes(type.name)) {
-          color = "#69c3e9";
+          color = "primary";
         } else if (selectedTypes.length === 0 && type.name === "all") {
-          color = "#69c3e9";
+          color = "primary";
         } else {
-          color = "e4e4e4";
+          color = "default";
         }
         return (
           <Chip
             key={type.name}
             label={type.name}
+            color={color as "default" | "primary"}
             sx={{
               margin: 0.4,
-              backgroundColor: color,
             }}
             onClick={() => {
               handleTypes(type.name);

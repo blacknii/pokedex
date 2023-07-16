@@ -21,13 +21,13 @@ const Generations = ({
   return (
     <Box>
       {regions.map((type) => {
-        const isSelected =
-          type.name === selectedRegion.name ? "#69c3e9" : "e4e4e4";
+        const color = type.name === selectedRegion.name ? "primary" : "default";
         return (
           <Chip
             key={type.name}
             label={type.name}
-            sx={{ margin: 0.4, backgroundColor: isSelected }}
+            color={color}
+            sx={{ margin: 0.4 }}
             onClick={() => {
               setSelectedRegion(type);
               setPage(1);
