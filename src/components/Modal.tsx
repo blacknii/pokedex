@@ -1,5 +1,4 @@
 import { Dialog, DialogContent, Typography } from "@mui/material";
-// import { types } from "../data/types";
 
 type ModalProps = {
   open: boolean;
@@ -18,12 +17,7 @@ type ModalProps = {
 const Modal = ({ open, handleClose, modalData }: ModalProps) => {
   return (
     <>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="dialog-title"
-        aria-describedby="dialog-description"
-      >
+      <Dialog open={open} onClose={handleClose}>
         <DialogContent>
           <img
             style={{
@@ -31,6 +25,9 @@ const Modal = ({ open, handleClose, modalData }: ModalProps) => {
             }}
             src={modalData.img}
           />
+          <Typography>
+            <strong>id</strong>: {modalData.id}
+          </Typography>
           <Typography>
             <strong>Name</strong>: {modalData.name}
           </Typography>

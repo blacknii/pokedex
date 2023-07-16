@@ -1,15 +1,14 @@
 import { Box, Chip } from "@mui/material";
 import { types } from "../data/types";
 
-interface typesProps {
+interface TypesProps {
   selectedTypes: string[];
   setSelectedTypes: (newTypes: string[]) => void;
   setPage: (newTypes: number) => void;
 }
 
-const Types = ({ selectedTypes, setSelectedTypes, setPage }: typesProps) => {
+const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
   const handleTypes = (newtype: string) => {
-    console.log(selectedTypes);
     if (newtype === "all") {
       setSelectedTypes([]);
     } else if (
@@ -29,7 +28,14 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: typesProps) => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        gap: "4px",
+      }}
+    >
       {types.map((type) => {
         let color;
         if (selectedTypes.includes(type.name)) {
@@ -39,14 +45,12 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: typesProps) => {
         } else {
           color = "default";
         }
+
         return (
           <Chip
             key={type.name}
             label={type.name}
             color={color as "default" | "primary"}
-            sx={{
-              margin: 0.4,
-            }}
             onClick={() => {
               handleTypes(type.name);
             }}

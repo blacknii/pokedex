@@ -13,23 +13,30 @@ interface TypesProps {
   setPage: (newPage: number) => void;
 }
 
-const Generations = ({
+const Regions = ({
   selectedRegion,
   setSelectedRegion,
   setPage,
 }: TypesProps) => {
   return (
-    <Box>
-      {regions.map((type) => {
-        const color = type.name === selectedRegion.name ? "primary" : "default";
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        gap: "4px",
+      }}
+    >
+      {regions.map((region) => {
+        const color =
+          region.name === selectedRegion.name ? "primary" : "default";
         return (
           <Chip
-            key={type.name}
-            label={type.name}
+            key={region.name}
+            label={region.name}
             color={color}
-            sx={{ margin: 0.4 }}
             onClick={() => {
-              setSelectedRegion(type);
+              setSelectedRegion(region);
               setPage(1);
             }}
           />
@@ -39,4 +46,4 @@ const Generations = ({
   );
 };
 
-export default Generations;
+export default Regions;

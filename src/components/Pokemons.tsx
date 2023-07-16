@@ -24,18 +24,19 @@ type PokemonProps = {
   data: Pokemon[] | undefined;
 };
 
+const dummyPokemon = {
+  img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/.png",
+  id: 0,
+  name: "N/A",
+  weight: 0,
+  height: 0,
+  types: ["N/A"],
+  generation: "N/A",
+};
+
 const Pokemons = ({ data }: PokemonProps) => {
   const [open, setOpen] = useState<boolean>(false);
-
-  const [modalData, setModalData] = useState({
-    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
-    id: 4,
-    name: "charmander",
-    weight: 85,
-    height: 6,
-    types: ["fire"],
-    generation: "Kanto",
-  });
+  const [modalData, setModalData] = useState(dummyPokemon);
 
   const handleOpen = (pokemon: Pokemon) => {
     setModalData(pokemon);

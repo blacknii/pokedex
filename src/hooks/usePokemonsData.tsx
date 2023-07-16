@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { regions } from "../data/regions";
 import axios from "axios";
 
+const individualRegions = regions.slice(1);
+
 interface PokemonType {
   pokemon_v2_type: {
     name: string;
@@ -52,6 +54,13 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
     { query }
   );
 
+  const generationFilter = (id: number) => {
+    return (
+      individualRegions.find((gen) => id >= gen.start && id <= gen.end)?.name ||
+      "Unknown"
+    );
+  };
+
   return response.data.data.pokemon_v2_pokemon.map((pokemon) => ({
     img: `https://img.pokemondb.net/sprites/home/normal/${pokemon.name}.png`,
     id: pokemon.id,
@@ -61,11 +70,7 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
     types: pokemon.pokemon_v2_pokemontypes.map(
       (type) => type.pokemon_v2_type.name
     ),
-    generation:
-      regions
-        .slice(1)
-        .find((gen) => pokemon.id >= gen.start && pokemon.id <= gen.end)
-        ?.name || "Unknown",
+    generation: generationFilter(pokemon.id),
   }));
 };
 

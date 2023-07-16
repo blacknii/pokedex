@@ -1,4 +1,4 @@
-import Generations from "./components/Generations";
+import Regions from "./components/Regions";
 import Pokemons from "./components/Pokemons";
 import PokemonsSkeleton from "./components/PokemonsSkeleton";
 import Types from "./components/Types";
@@ -62,7 +62,7 @@ function App() {
       <Typography component="h1" variant="h3">
         Pokedex
       </Typography>
-      <Generations
+      <Regions
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
         setPage={setPage}
