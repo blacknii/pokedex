@@ -48,6 +48,8 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
 
         return (
           <Chip
+            icon={type.iconColored}
+            // sx={{ padding: "0 0 0 8px" }}
             key={type.name}
             label={type.name}
             color={color as "default" | "primary"}
