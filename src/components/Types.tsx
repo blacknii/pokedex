@@ -38,21 +38,36 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
     >
       {types.map((type) => {
         let color;
+        let icon;
         if (selectedTypes.includes(type.name)) {
-          color = "primary";
+          color = {
+            backgroundColor: `pokemonTypes.${type.name}.main`,
+            color: "white",
+            border: "solid #ededed 1px",
+            "&:hover": { backgroundColor: `pokemonTypes.${type.name}.light` },
+          };
+          icon = true;
         } else if (selectedTypes.length === 0 && type.name === "all") {
-          color = "primary";
+          color = {
+            backgroundColor: `#1976d2`,
+            color: "white",
+            border: "solid #ededed 1px",
+            "&:hover": { backgroundColor: `#42a5f5` },
+          };
+          icon = true;
         } else {
-          color = "default";
+          color = { backgroundColor: "white", border: "solid #ededed 1px" };
+          icon = false;
         }
 
         return (
           <Chip
-            icon={type.iconColored}
+            icon={icon ? type.iconWhite : type.iconColored}
             // sx={{ padding: "0 0 0 8px" }}
             key={type.name}
             label={type.name}
-            color={color as "default" | "primary"}
+            // color={color as "default" | "primary"}
+            sx={color}
             onClick={() => {
               handleTypes(type.name);
             }}

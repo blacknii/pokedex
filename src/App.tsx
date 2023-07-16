@@ -4,8 +4,9 @@ import PokemonsSkeleton from "./components/PokemonsSkeleton";
 import Types from "./components/Types";
 import { usePokemonsData } from "./hooks/usePokemonsData";
 import { regions } from "./data/regions";
-import { Stack, Typography, Pagination } from "@mui/material";
+import { Stack, Typography, Pagination, ThemeProvider } from "@mui/material";
 import { useState } from "react";
+import theme from "./theme";
 import "./App.css";
 
 function App() {
@@ -58,24 +59,26 @@ function App() {
   );
 
   return (
-    <Stack spacing={2} sx={{ alignItems: "center" }}>
-      <Typography component="h1" variant="h3">
-        Pokedex
-      </Typography>
-      <Regions
-        selectedRegion={selectedRegion}
-        setSelectedRegion={setSelectedRegion}
-        setPage={setPage}
-      />
-      <Types
-        selectedTypes={selectedTypes}
-        setSelectedTypes={setSelectedTypes}
-        setPage={setPage}
-      />
-      {pagination}
-      {pokemons}
-      {pagination}
-    </Stack>
+    <ThemeProvider theme={theme}>
+      <Stack spacing={2} sx={{ alignItems: "center" }}>
+        <Typography component="h1" variant="h3">
+          Pokedex
+        </Typography>
+        <Regions
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
+          setPage={setPage}
+        />
+        <Types
+          selectedTypes={selectedTypes}
+          setSelectedTypes={setSelectedTypes}
+          setPage={setPage}
+        />
+        {pagination}
+        {pokemons}
+        {pagination}
+      </Stack>
+    </ThemeProvider>
   );
 }
 
