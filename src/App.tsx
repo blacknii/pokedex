@@ -1,39 +1,61 @@
-import { Stack, Typography, Pagination } from "@mui/material";
-import { regions } from "./data/regions";
-import "./App.css";
-
-import { usePokemonsData } from "./hooks/usePokemonsData";
 import Generations from "./components/Generations";
 import Pokemons from "./components/Pokemons";
 import PokemonsSkeleton from "./components/PokemonsSkeleton";
 import Types from "./components/Types";
+import { usePokemonsData } from "./hooks/usePokemonsData";
+import { regions } from "./data/regions";
+import { Stack, Typography, Pagination } from "@mui/material";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const { isLoading, rawData } = usePokemonsData();
-
   const [page, setPage] = useState(1);
 
-  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
+
+  const isCorrectRegion = (id: number) => {
+    return id >= selectedRegion.start && id <= selectedRegion.end;
+  };
+
+  const isCorrectType = (types: string[]) => {
+    return (
+      (selectedTypes[0] === undefined || types.includes(selectedTypes[0])) &&
+      (selectedTypes[1] === undefined || types.includes(selectedTypes[1]))
+    );
+  };
+
+  const filteredPokemons = rawData?.filter(
+    (pokemon) => isCorrectRegion(pokemon.id) && isCorrectType(pokemon.types)
+  );
+
+  const pageAmount = filteredPokemons
+    ? Math.ceil(filteredPokemons.length / 20)
+    : 1;
+
+  const handlePageChange = (
+    _event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     setPage(value);
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
 
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
-
-  const filteredPokemons = rawData?.filter(
-    (pokemon) =>
-      pokemon.id >= selectedRegion.start &&
-      pokemon.id <= selectedRegion.end &&
-      (selectedTypes[0] === undefined ||
-        pokemon.types.includes(selectedTypes[0])) &&
-      (selectedTypes[1] === undefined ||
-        pokemon.types.includes(selectedTypes[1]))
+  const pagination = (
+    <Pagination count={pageAmount} page={page} onChange={handlePageChange} />
   );
 
-  const pageAmount = filteredPokemons ? filteredPokemons?.length : 0;
+  const pokemons = isLoading ? (
+    <PokemonsSkeleton />
+  ) : (
+    <Pokemons
+      data={
+        filteredPokemons && filteredPokemons.slice((page - 1) * 20, page * 20)
+      }
+    />
+  );
 
   return (
     <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -50,26 +72,9 @@ function App() {
         setSelectedTypes={setSelectedTypes}
         setPage={setPage}
       />
-      <Pagination
-        count={Math.ceil(pageAmount / 20)}
-        page={page}
-        onChange={handleChange}
-      />
-      {isLoading ? (
-        <PokemonsSkeleton />
-      ) : (
-        <Pokemons
-          data={
-            filteredPokemons &&
-            filteredPokemons.slice((page - 1) * 20, page * 20)
-          }
-        />
-      )}
-      <Pagination
-        count={Math.ceil(pageAmount / 20)}
-        page={page}
-        onChange={handleChange}
-      />
+      {pagination}
+      {pokemons}
+      {pagination}
     </Stack>
   );
 }
