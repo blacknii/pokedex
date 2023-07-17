@@ -15,6 +15,7 @@ import { useState } from "react";
 import theme from "./theme";
 import "./App.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const { isLoading, rawData, error } = usePokemonsData();
@@ -106,6 +107,7 @@ function App() {
           pokemons
         )}
         {pagination}
+        <Footer />
       </Stack>
     </ThemeProvider>
   );
