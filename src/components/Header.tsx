@@ -11,8 +11,12 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ setDarkMode }) => {
   const [checked, setChecked] = useState(true);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    setDarkMode(checked);
+  };
 
   return (
     <AppBar sx={{ position: "static" }}>
@@ -35,9 +39,9 @@ const Header = () => {
           </Typography>
         </Stack>
         <Stack direction="row" sx={{ alignItems: "center" }}>
-          <LightModeIcon />
-          <Switch checked={checked} onChange={handleChange} color="secondary" />
           <DarkModeIcon />
+          <Switch checked={checked} onChange={handleChange} color="secondary" />
+          <LightModeIcon />
         </Stack>
       </Toolbar>
     </AppBar>
