@@ -10,7 +10,7 @@ import theme from "./theme";
 import "./App.css";
 
 function App() {
-  const { isLoading, rawData } = usePokemonsData();
+  const { isLoading, rawData, error } = usePokemonsData();
   const [page, setPage] = useState(1);
 
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
@@ -58,6 +58,8 @@ function App() {
     />
   );
 
+  const isPokemonsArrEmpty = filteredPokemons?.length === 0 && !isLoading;
+
   return (
     <ThemeProvider theme={theme}>
       <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -75,7 +77,18 @@ function App() {
           setPage={setPage}
         />
         {pagination}
-        {pokemons}
+        {error && (
+          <Typography component="h2" variant="h3" color={"gray"}>
+            <strong>ERROR 404</strong>
+          </Typography>
+        )}
+        {isPokemonsArrEmpty ? (
+          <Typography component="h2" variant="h3" color={"gray"}>
+            there is no pokemon matching the description
+          </Typography>
+        ) : (
+          pokemons
+        )}
         {pagination}
       </Stack>
     </ThemeProvider>
