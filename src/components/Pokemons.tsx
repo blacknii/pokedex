@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import Modal from "./Modal";
 import { useState } from "react";
+import { types } from "../data/types";
 
 interface Pokemon {
   id: number;
@@ -54,7 +55,13 @@ const Pokemons = ({ data }: PokemonProps) => {
         data.map((pokemon: Pokemon) => (
           <Card
             key={pokemon.id}
-            sx={{ width: 250, padding: 1, margin: 2, cursor: "pointer" }}
+            sx={{
+              textAlign: "center",
+              width: 250,
+              padding: 1,
+              margin: 2,
+              cursor: "pointer",
+            }}
             onClick={() => {
               handleOpen(pokemon);
             }}
@@ -72,10 +79,32 @@ const Pokemons = ({ data }: PokemonProps) => {
               <Typography gutterBottom variant="h5" component="div">
                 {pokemon.name}
               </Typography>
-              <Stack direction={"row"} gap={1}>
-                {pokemon.types.map((type) => (
-                  <Chip key={type} label={type} />
-                ))}
+              <Stack
+                direction={"row"}
+                gap={1}
+                sx={{ justifyContent: "center" }}
+              >
+                {pokemon.types.map((textType) => {
+                  return (
+                    <Chip
+                      key={textType}
+                      label={textType}
+                      icon={
+                        types.find((element) => element.name === textType)
+                          .iconWhite
+                      }
+                      sx={{
+                        backgroundColor: `pokemonTypes.${
+                          types.find((element) => element.name === textType)
+                            .name
+                        }.main`,
+                        color: "white",
+                        border: "solid #ededed 1px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  );
+                })}
               </Stack>
             </CardContent>
           </Card>

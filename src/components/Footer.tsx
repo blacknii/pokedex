@@ -5,7 +5,14 @@ const Footer = () => {
     <AppBar sx={{ position: "static", alignItems: "center" }}>
       <Toolbar>
         <Stack direction="row" sx={{ alignItems: "center" }}>
-          <Typography>
+          <Typography
+            sx={{
+              fontSize: {
+                sm: 18,
+                xs: 15,
+              },
+            }}
+          >
             POKEDEX Powered by{" "}
             <a href="https://pokeapi.co/" target="_blank">
               PokéAPI

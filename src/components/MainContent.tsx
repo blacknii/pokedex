@@ -4,7 +4,7 @@ import PokemonsSkeleton from "./PokemonsSkeleton";
 import Types from "./Types";
 import { usePokemonsData } from "../hooks/usePokemonsData";
 import { regions } from "../data/regions";
-import { Typography, Pagination, Stack } from "@mui/material";
+import { Typography, Pagination, Stack, Box } from "@mui/material";
 import { useState } from "react";
 
 const MainContent = () => {
@@ -64,6 +64,7 @@ const MainContent = () => {
         alignItems: "center",
         maxWidth: "1500px",
         flexGrow: "1fr",
+        height: "100%",
       }}
     >
       <Regions
@@ -78,24 +79,40 @@ const MainContent = () => {
       />
       {pagination}
       {error && (
-        <Typography
-          component="h2"
-          variant="h3"
-          color={"gray"}
-          sx={{ padding: "30px" }}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexGrow: "1",
+          }}
         >
-          <strong>ERROR 404</strong>
-        </Typography>
+          <Typography
+            component="h2"
+            variant="h3"
+            color={"gray"}
+            sx={{ padding: "30px" }}
+          >
+            <strong>ERROR 404</strong>
+          </Typography>
+        </Box>
       )}
       {isPokemonsArrEmpty ? (
-        <Typography
-          component="h2"
-          variant="h5"
-          color={"gray"}
-          sx={{ padding: "30px" }}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexGrow: "1",
+          }}
         >
-          there is no pokemon matching the description
-        </Typography>
+          <Typography
+            component="h2"
+            variant="h5"
+            color={"gray"}
+            sx={{ padding: "30px" }}
+          >
+            there is no pokemon matching the description
+          </Typography>
+        </Box>
       ) : (
         pokemons
       )}

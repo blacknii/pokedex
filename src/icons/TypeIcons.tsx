@@ -1,5 +1,5 @@
-const height = "1.2em";
-const width = "1.2em";
+const height = "2em";
+const width = "2em";
 
 interface IconProps {
   fill: string;

@@ -75,6 +75,15 @@ const theme = createTheme({
         main: "#EE90E6",
         light: "#F1A1EA",
       },
+      components: {
+        MuiButton: {
+          styleOverrides: {
+            outlinedPrimary: {
+              borderRadius: 20,
+            },
+          },
+        },
+      },
     },
   },
 });

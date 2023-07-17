@@ -21,7 +21,7 @@ import {
 
 export const types = [
   {
-    name: "all",
+    name: "all types",
     color: "#",
     iconWhite: undefined,
     iconColored: undefined,

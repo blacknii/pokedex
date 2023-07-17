@@ -9,7 +9,7 @@ interface TypesProps {
 
 const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
   const handleTypes = (newtype: string) => {
-    if (newtype === "all") {
+    if (newtype === "all types") {
       setSelectedTypes([]);
     } else if (
       selectedTypes.includes(newtype) === false &&
@@ -47,7 +47,7 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
             "&:hover": { backgroundColor: `pokemonTypes.${type.name}.light` },
           };
           icon = true;
-        } else if (selectedTypes.length === 0 && type.name === "all") {
+        } else if (selectedTypes.length === 0 && type.name === "all types") {
           color = {
             backgroundColor: `#1976d2`,
             color: "white",
@@ -63,10 +63,8 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
         return (
           <Chip
             icon={icon ? type.iconWhite : type.iconColored}
-            // sx={{ padding: "0 0 0 8px" }}
             key={type.name}
             label={type.name}
-            // color={color as "default" | "primary"}
             sx={color}
             onClick={() => {
               handleTypes(type.name);
