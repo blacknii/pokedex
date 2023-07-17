@@ -9,8 +9,11 @@ import {
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useState } from "react";
 
 const Header = () => {
+  const [checked, setChecked] = useState(true);
+
   return (
     <AppBar sx={{ position: "static" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -33,7 +36,7 @@ const Header = () => {
         </Stack>
         <Stack direction="row" sx={{ alignItems: "center" }}>
           <LightModeIcon />
-          <Switch color="secondary" />
+          <Switch checked={checked} onChange={handleChange} color="secondary" />
           <DarkModeIcon />
         </Stack>
       </Toolbar>

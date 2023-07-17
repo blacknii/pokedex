@@ -1,7 +1,12 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
 
+const darkMode = false;
+
+const mode = darkMode ? "dark" : "light";
+
 const theme = createTheme({
   palette: {
+    mode: mode,
     pokemonTypes: {
       normal: {
         main: "#A0A29F",
