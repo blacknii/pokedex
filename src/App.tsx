@@ -4,10 +4,17 @@ import PokemonsSkeleton from "./components/PokemonsSkeleton";
 import Types from "./components/Types";
 import { usePokemonsData } from "./hooks/usePokemonsData";
 import { regions } from "./data/regions";
-import { Stack, Typography, Pagination, ThemeProvider } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Pagination,
+  ThemeProvider,
+  CssBaseline,
+} from "@mui/material";
 import { useState } from "react";
 import theme from "./theme";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   const { isLoading, rawData, error } = usePokemonsData();
@@ -44,10 +51,6 @@ function App() {
     document.documentElement.scrollTop = 0;
   };
 
-  const pagination = (
-    <Pagination count={pageAmount} page={page} onChange={handlePageChange} />
-  );
-
   const pokemons = isLoading ? (
     <PokemonsSkeleton />
   ) : (
@@ -60,12 +63,15 @@ function App() {
 
   const isPokemonsArrEmpty = filteredPokemons?.length === 0 && !isLoading;
 
+  const pagination = !isPokemonsArrEmpty && !error && (
+    <Pagination count={pageAmount} page={page} onChange={handlePageChange} />
+  );
+
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Stack spacing={2} sx={{ alignItems: "center" }}>
-        <Typography component="h1" variant="h3">
-          Pokedex
-        </Typography>
+        <Header />
         <Regions
           selectedRegion={selectedRegion}
           setSelectedRegion={setSelectedRegion}
@@ -78,12 +84,22 @@ function App() {
         />
         {pagination}
         {error && (
-          <Typography component="h2" variant="h3" color={"gray"}>
+          <Typography
+            component="h2"
+            variant="h3"
+            color={"gray"}
+            sx={{ padding: "30px" }}
+          >
             <strong>ERROR 404</strong>
           </Typography>
         )}
         {isPokemonsArrEmpty ? (
-          <Typography component="h2" variant="h3" color={"gray"}>
+          <Typography
+            component="h2"
+            variant="h5"
+            color={"gray"}
+            sx={{ padding: "30px" }}
+          >
             there is no pokemon matching the description
           </Typography>
         ) : (
