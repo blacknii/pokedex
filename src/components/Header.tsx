@@ -11,8 +11,9 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useState } from "react";
 
-const Header = ({ setDarkMode }) => {
-  const [checked, setChecked] = useState(true);
+const Header = ({ setDarkMode, prefersDarkMode }) => {
+  const [checked, setChecked] = useState(!prefersDarkMode);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
     setDarkMode(checked);
