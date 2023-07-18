@@ -8,8 +8,8 @@ interface Region {
 }
 
 interface TypesProps {
-  selectedRegion: Region;
-  setSelectedRegion: (newRegion: Region) => void;
+  selectedRegion: Region[];
+  setSelectedRegion: (newRegion: Region[]) => void;
   setPage: (newPage: number) => void;
 }
 
@@ -30,7 +30,7 @@ const Regions = ({
       {regions.map((region) => {
         let color;
 
-        if (region.name === selectedRegion.name) {
+        if (selectedRegion.find((r) => r.name === region.name)) {
           color = {
             backgroundColor: `primary.main`,
             color: `primary.contrastText`,
@@ -51,7 +51,31 @@ const Regions = ({
             key={region.name}
             label={region.name}
             onClick={() => {
-              setSelectedRegion(region);
+              let newSelectedRegions = [...selectedRegion];
+
+              if (region.name === "all regions") {
+                newSelectedRegions = [region];
+              } else {
+                newSelectedRegions = newSelectedRegions.filter(
+                  (r) => r.name !== "all regions"
+                );
+
+                if (newSelectedRegions.find((r) => r.name === region.name)) {
+                  newSelectedRegions = newSelectedRegions.filter(
+                    (r) => r.name !== region.name
+                  );
+                } else {
+                  newSelectedRegions.push(region);
+                }
+                if (newSelectedRegions.length === 0)
+                  newSelectedRegions.push({
+                    name: "all regions",
+                    start: 1,
+                    end: 1010,
+                  });
+              }
+
+              setSelectedRegion(newSelectedRegions);
               setPage(1);
             }}
           />

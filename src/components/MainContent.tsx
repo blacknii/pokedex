@@ -10,12 +10,13 @@ import { useState } from "react";
 const MainContent = () => {
   const { isLoading, rawData, error } = usePokemonsData();
   const [page, setPage] = useState(1);
-
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
+  const [selectedRegion, setSelectedRegion] = useState([regions[0]]);
 
   const isCorrectRegion = (id: number) => {
-    return id >= selectedRegion.start && id <= selectedRegion.end;
+    return selectedRegion.some(
+      (region) => id >= region.start && id <= region.end
+    );
   };
 
   const isCorrectType = (types: string[]) => {
