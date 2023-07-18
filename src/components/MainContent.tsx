@@ -65,6 +65,7 @@ const MainContent = () => {
         maxWidth: "1500px",
         flexGrow: "1fr",
         height: "100%",
+        padding: "0 20px",
       }}
     >
       <Regions
@@ -108,7 +109,7 @@ const MainContent = () => {
             component="h2"
             variant="h5"
             color={"gray"}
-            sx={{ padding: "30px" }}
+            sx={{ padding: "40px 0", textAlign: "center" }}
           >
             there is no pokemon matching the description
           </Typography>

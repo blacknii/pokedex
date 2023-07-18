@@ -11,9 +11,10 @@ const Footer = () => {
                 sm: 18,
                 xs: 15,
               },
+              textAlign: "center",
             }}
           >
-            POKEDEX Powered by{" "}
+            POKEDEX powered by{" "}
             <Link color="secondary" href="https://pokeapi.co/" target="_blank">
               PokéAPI
             </Link>{" "}
