@@ -13,7 +13,11 @@ import { red } from "@mui/material/colors";
 import { useState } from "react";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const prefersDarkMode =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [darkMode, setDarkMode] = useState(prefersDarkMode);
 
   const mode = darkMode ? "dark" : "light";
 
@@ -139,7 +143,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Stack spacing={2} sx={{ alignItems: "center", height: "100vh" }}>
-        <Header setDarkMode={setDarkMode} />
+        <Header setDarkMode={setDarkMode} prefersDarkMode={prefersDarkMode} />
         <Box sx={{ flexGrow: "1" }}>
           <MainContent />
         </Box>
