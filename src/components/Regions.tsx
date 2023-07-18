@@ -28,13 +28,28 @@ const Regions = ({
       }}
     >
       {regions.map((region) => {
-        const color =
-          region.name === selectedRegion.name ? "primary" : "default";
+        let color;
+
+        if (region.name === selectedRegion.name) {
+          color = {
+            backgroundColor: `primary.main`,
+            color: `primary.contrastText`,
+            border: "solid 1px",
+            borderColor: "pokemonTypes.main.outline",
+            "&:hover": { backgroundColor: "primary.light" },
+          };
+        } else {
+          color = {
+            border: "solid 1px",
+            borderColor: "pokemonTypes.main.outline",
+            backgroundColor: "pokemonTypes.main.main",
+          };
+        }
         return (
           <Chip
+            sx={color}
             key={region.name}
             label={region.name}
-            color={color}
             onClick={() => {
               setSelectedRegion(region);
               setPage(1);

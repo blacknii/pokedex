@@ -35,7 +35,7 @@ export const types = [
   {
     name: "fire",
     color: "#FBA54C",
-    iconWhite: <FireIcon fill={"#fff"} />,
+    iconWhite: <FireIcon fill={"#212121"} />,
     iconColored: <FireIcon fill={"#FBA54C"} />,
   },
   {
@@ -47,7 +47,7 @@ export const types = [
   {
     name: "electric",
     color: "#F2D94E",
-    iconWhite: <ElectricIcon fill={"#fff"} />,
+    iconWhite: <ElectricIcon fill={"#212121"} />,
     iconColored: <ElectricIcon fill={"#F2D94E"} />,
   },
   {
@@ -59,7 +59,7 @@ export const types = [
   {
     name: "ice",
     color: "#75D0C1",
-    iconWhite: <IceIcon fill={"#fff"} />,
+    iconWhite: <IceIcon fill={"#212121"} />,
     iconColored: <IceIcon fill={"#75D0C1"} />,
   },
   {

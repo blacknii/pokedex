@@ -98,8 +98,8 @@ const Pokemons = ({ data }: PokemonProps) => {
                           types.find((element) => element.name === textType)
                             .name
                         }.main`,
-                        color: "white",
-                        border: "solid #ededed 1px",
+                        color: `pokemonTypes.${textType}.contrastText`,
+
                         cursor: "pointer",
                       }}
                     />

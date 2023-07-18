@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Stack } from "@mui/material";
+import { AppBar, Toolbar, Typography, Stack, Link } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -14,20 +14,25 @@ const Footer = () => {
             }}
           >
             POKEDEX Powered by{" "}
-            <a href="https://pokeapi.co/" target="_blank">
+            <Link color="secondary" href="https://pokeapi.co/" target="_blank">
               PokéAPI
-            </a>{" "}
+            </Link>{" "}
             |{" "}
-            <a href="https://pokemondb.net/" target="_blank">
+            <Link
+              color="secondary"
+              href="https://pokemondb.net/"
+              target="_blank"
+            >
               Pokemon Database
-            </a>{" "}
+            </Link>{" "}
             |{" "}
-            <a
+            <Link
+              color="secondary"
               href="https://github.com/duiker101/pokemon-type-svg-icons"
               target="_blank"
             >
               Type Icons
-            </a>
+            </Link>
           </Typography>
         </Stack>
       </Toolbar>
