@@ -33,14 +33,14 @@ function App() {
           contrastText: "#fff",
         },
         normal: {
-          main: "#A0A29F",
+          main: "#828782",
           light: "#AEB0AD",
           contrastText: "#fff",
         },
         fire: {
           main: "#FBA54C",
           light: "#FCB267",
-          contrastText: "#212121",
+          contrastText: "#0A0A0A",
         },
         water: {
           main: "#539DDF",
@@ -60,7 +60,7 @@ function App() {
         ice: {
           main: "#75D0C1",
           light: "#8AD7CA",
-          contrastText: "#212121",
+          contrastText: "#182F2F",
         },
         fighting: {
           main: "#D3425F",
@@ -80,7 +80,7 @@ function App() {
         flying: {
           main: "#A1BBEC",
           light: "#AFC5EF",
-          contrastText: "#fff",
+          contrastText: "#0F234D",
         },
         psychic: {
           main: "#FA8581",
@@ -90,12 +90,12 @@ function App() {
         bug: {
           main: "#92BC2C",
           light: "#A7D23F",
-          contrastText: "#fff",
+          contrastText: "#25320B",
         },
         rock: {
           main: "#C9BB8A",
           light: "#D1C59C",
-          contrastText: "#fff",
+          contrastText: "#353018",
         },
         ghost: {
           main: "#5F6DBC",

@@ -28,9 +28,9 @@ export const types = [
   },
   {
     name: "normal",
-    color: "#A0A29F",
+    color: "#828782",
     iconWhite: <NormalIcon fill={"#fff"} />,
-    iconColored: <NormalIcon fill={"#A0A29F"} />,
+    iconColored: <NormalIcon fill={"#828782"} />,
   },
   {
     name: "fire",
@@ -59,7 +59,7 @@ export const types = [
   {
     name: "ice",
     color: "#75D0C1",
-    iconWhite: <IceIcon fill={"#212121"} />,
+    iconWhite: <IceIcon fill={"#182F2F"} />,
     iconColored: <IceIcon fill={"#75D0C1"} />,
   },
   {
@@ -83,7 +83,7 @@ export const types = [
   {
     name: "flying",
     color: "#A1BBEC",
-    iconWhite: <FlyingIcon fill={"#fff"} />,
+    iconWhite: <FlyingIcon fill={"#0F234D"} />,
     iconColored: <FlyingIcon fill={"#A1BBEC"} />,
   },
   {
@@ -95,13 +95,13 @@ export const types = [
   {
     name: "bug",
     color: "#92BC2C",
-    iconWhite: <BugIcon fill={"#fff"} />,
+    iconWhite: <BugIcon fill={"#25320B"} />,
     iconColored: <BugIcon fill={"#92BC2C"} />,
   },
   {
     name: "rock",
     color: "#C9BB8A",
-    iconWhite: <RockIcon fill={"#fff"} />,
+    iconWhite: <RockIcon fill={"#353018"} />,
     iconColored: <RockIcon fill={"#C9BB8A"} />,
   },
   {
