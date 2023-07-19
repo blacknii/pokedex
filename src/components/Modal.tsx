@@ -37,7 +37,7 @@ const Modal = ({ open, handleClose, modalData }: ModalProps) => {
             spacing={2}
             columns={{ xs: 1, sm: 2 }}
             sx={{
-              maxWidth: { xs: 300, sm: 400 },
+              maxWidth: { xs: 300, sm: 440 },
               margin: "0 auto 15px auto",
               textAlign: { xs: "center", sm: "start" },
             }}
