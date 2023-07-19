@@ -62,6 +62,7 @@ const Pokemons = ({ data }: PokemonProps) => {
               margin: 2,
               cursor: "pointer",
             }}
+            elevation={3}
             onClick={() => {
               handleOpen(pokemon);
             }}

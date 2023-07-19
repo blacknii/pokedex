@@ -28,10 +28,7 @@ const Header = ({ setDarkMode, prefersDarkMode }) => {
             edge="start"
             color="inherit"
             aria-label="logo"
-            onClick={() => {
-              document.body.scrollTop = 0;
-              document.documentElement.scrollTop = 0;
-            }}
+            href="#"
           >
             <CatchingPokemonIcon />
           </IconButton>

@@ -1,4 +1,10 @@
-import { Dialog, DialogContent, Typography } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+  Typography,
+  Button,
+} from "@mui/material";
 
 type ModalProps = {
   open: boolean;
@@ -44,6 +50,15 @@ const Modal = ({ open, handleClose, modalData }: ModalProps) => {
           <Typography>
             <strong>Weight</strong>: {modalData.weight}
           </Typography>
+          <DialogActions>
+            <Button
+              variant="contained"
+              href={`https://www.pokemon.com/us/pokedex/${modalData.id}`}
+              target="_blank"
+            >
+              more info
+            </Button>
+          </DialogActions>
         </DialogContent>
       </Dialog>
     </>

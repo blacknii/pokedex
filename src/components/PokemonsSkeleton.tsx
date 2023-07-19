@@ -6,10 +6,14 @@ const PokemonsSkeleton = () => {
       {Array(20)
         .fill(0)
         .map((_, i) => (
-          <Card sx={{ width: 250, padding: 1, margin: 2 }} key={i}>
+          <Card
+            sx={{ width: 250, margin: 2, padding: 1 }}
+            key={i}
+            elevation={3}
+          >
             <Skeleton
               variant="rectangular"
-              width={250}
+              width={234}
               height={250}
               sx={{ borderRadius: 1 }}
             />

@@ -21,10 +21,10 @@ const Footer = () => {
             |{" "}
             <Link
               color="secondary"
-              href="https://pokemondb.net/"
+              href="https://www.pokemon.com/"
               target="_blank"
             >
-              Pokemon Database
+              Pokemon
             </Link>{" "}
             |{" "}
             <Link
