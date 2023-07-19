@@ -1,15 +1,7 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Stack,
-  Switch,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography, Stack, Switch } from "@mui/material";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { useState } from "react";
 
 type HeaderProps = {
   darkMode: boolean;
