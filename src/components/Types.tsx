@@ -44,24 +44,24 @@ const Types = ({ selectedTypes, setSelectedTypes, setPage }: TypesProps) => {
             backgroundColor: `pokemonTypes.${type.name}.main`,
             color: `pokemonTypes.${type.name}.contrastText`,
             border: "solid 1px",
-            borderColor: "pokemonTypes.main.outline",
+            borderColor: "pokemonTypes.chip.outline",
             "&:hover": { backgroundColor: `pokemonTypes.${type.name}.light` },
           };
           icon = true;
         } else if (selectedTypes.length === 0 && type.name === "all types") {
           color = {
             backgroundColor: `primary.main`,
-            color: `pokemonTypes.main.contrastText`,
+            color: `pokemonTypes.chip.contrastText`,
             border: "solid 1px",
-            borderColor: "pokemonTypes.main.outline",
-            "&:hover": { backgroundColor: `#42a5f5` },
+            borderColor: "pokemonTypes.chip.outline",
+            "&:hover": { backgroundColor: `primary.light` },
           };
           icon = true;
         } else {
           color = {
             border: "solid 1px",
-            borderColor: "pokemonTypes.main.outline",
-            backgroundColor: "pokemonTypes.main.main",
+            borderColor: "pokemonTypes.chip.outline",
+            backgroundColor: "pokemonTypes.chip.fill",
             "&:hover": { backgroundColor: `primary` },
           };
           icon = false;

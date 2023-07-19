@@ -35,14 +35,14 @@ const Regions = ({
             backgroundColor: `primary.main`,
             color: `primary.contrastText`,
             border: "solid 1px",
-            borderColor: "pokemonTypes.main.outline",
+            borderColor: "pokemonTypes.chip.outline",
             "&:hover": { backgroundColor: "primary.light" },
           };
         } else {
           color = {
             border: "solid 1px",
-            borderColor: "pokemonTypes.main.outline",
-            backgroundColor: "pokemonTypes.main.main",
+            borderColor: "pokemonTypes.chip.outline",
+            backgroundColor: "pokemonTypes.chip.fill",
           };
         }
         return (
