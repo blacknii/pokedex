@@ -24,7 +24,7 @@ type ModalProps = {
 const Modal = ({ open, handleClose, modalData }: ModalProps) => {
   return (
     <>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} disableScrollLock>
         <DialogContent>
           <img
             style={{
