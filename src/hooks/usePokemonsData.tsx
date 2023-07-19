@@ -81,13 +81,13 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
 export const usePokemonsData = (): {
   isLoading: boolean;
   error: Error | null;
-  rawData: Pokemon[] | undefined;
+  rawPokemons: Pokemon[] | undefined;
 } => {
   const {
     isLoading,
-    data: rawData,
+    data: rawPokemons,
     error,
   } = useQuery<Pokemon[], Error>(["pokemons"], fetchPokemons);
 
-  return { isLoading, rawData, error };
+  return { isLoading, rawPokemons, error };
 };

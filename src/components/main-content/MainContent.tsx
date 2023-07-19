@@ -8,7 +8,7 @@ import { Typography, Pagination, Stack, Box } from "@mui/material";
 import { useState } from "react";
 
 const MainContent = () => {
-  const { isLoading, rawData, error } = usePokemonsData();
+  const { isLoading, error, rawPokemons } = usePokemonsData();
   const [page, setPage] = useState(1);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedRegion, setSelectedRegion] = useState([regions[0]]);
@@ -26,13 +26,15 @@ const MainContent = () => {
     );
   };
 
-  const filteredPokemons = rawData?.filter(
+  const filteredPokemons = rawPokemons?.filter(
     (pokemon) => isCorrectRegion(pokemon.id) && isCorrectType(pokemon.types)
   );
 
   const pageAmount = filteredPokemons
     ? Math.ceil(filteredPokemons.length / 20)
     : 1;
+
+  const isPokemonsArrEmpty = filteredPokemons?.length === 0 && !isLoading;
 
   const handlePageChange = (
     _event: React.ChangeEvent<unknown>,
@@ -42,6 +44,10 @@ const MainContent = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
+
+  const pagination = !isPokemonsArrEmpty && !error && (
+    <Pagination count={pageAmount} page={page} onChange={handlePageChange} />
+  );
 
   const pokemons = isLoading ? (
     <PokemonsSkeleton />
@@ -53,19 +59,51 @@ const MainContent = () => {
     />
   );
 
-  const isPokemonsArrEmpty = filteredPokemons?.length === 0 && !isLoading;
-
-  const pagination = !isPokemonsArrEmpty && !error && (
-    <Pagination count={pageAmount} page={page} onChange={handlePageChange} />
+  const errorMessage = (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        flexGrow: "1",
+      }}
+    >
+      <Typography
+        component="h2"
+        variant="h3"
+        color={"gray"}
+        sx={{ padding: "30px" }}
+      >
+        <strong>ERROR 404</strong>
+      </Typography>
+    </Box>
   );
+  const emptyArrMessage = (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        flexGrow: "1",
+      }}
+    >
+      <Typography
+        component="h2"
+        variant="h5"
+        color={"gray"}
+        sx={{ padding: "40px 0", textAlign: "center" }}
+      >
+        there is no pokemon matching the description
+      </Typography>
+    </Box>
+  );
+
   return (
     <Stack
       spacing={2}
       sx={{
         alignItems: "center",
-        maxWidth: "1500px",
+        maxWidth: "94rem",
         height: "100%",
-        padding: "0 20px",
+        padding: "0 1.25rem",
       }}
     >
       <Regions
@@ -79,44 +117,8 @@ const MainContent = () => {
         setPage={setPage}
       />
       {pagination}
-      {error && (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexGrow: "1",
-          }}
-        >
-          <Typography
-            component="h2"
-            variant="h3"
-            color={"gray"}
-            sx={{ padding: "30px" }}
-          >
-            <strong>ERROR 404</strong>
-          </Typography>
-        </Box>
-      )}
-      {isPokemonsArrEmpty ? (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexGrow: "1",
-          }}
-        >
-          <Typography
-            component="h2"
-            variant="h5"
-            color={"gray"}
-            sx={{ padding: "40px 0", textAlign: "center" }}
-          >
-            there is no pokemon matching the description
-          </Typography>
-        </Box>
-      ) : (
-        pokemons
-      )}
+      {error && errorMessage}
+      {isPokemonsArrEmpty ? emptyArrMessage : pokemons}
       {pagination}
     </Stack>
   );
