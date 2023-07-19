@@ -43,7 +43,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Stack spacing={2} sx={{ alignItems: "center", height: "100vh" }}>
-        <Header setDarkMode={setDarkMode} prefersDarkMode={prefersDarkMode} />
+        <Header setDarkMode={setDarkMode} darkMode={darkMode} />
         <Box sx={{ flexGrow: "1" }}>
           <MainContent />
         </Box>

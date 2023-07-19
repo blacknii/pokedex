@@ -11,34 +11,30 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useState } from "react";
 
-const Header = ({ setDarkMode, prefersDarkMode }) => {
-  const [checked, setChecked] = useState(!prefersDarkMode);
+type HeaderProps = {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-    setDarkMode(checked);
-  };
-
+const Header = ({ setDarkMode, darkMode }: HeaderProps) => {
   return (
     <AppBar sx={{ position: "static" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Stack direction="row" sx={{ alignItems: "center" }}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="logo"
-            href="#"
-          >
-            <CatchingPokemonIcon />
-          </IconButton>
+        <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
+          <CatchingPokemonIcon aria-label="logo" />
           <Typography variant="h6" component="div">
             POKEDEX
           </Typography>
         </Stack>
         <Stack direction="row" sx={{ alignItems: "center" }}>
           <DarkModeIcon />
-          <Switch checked={checked} onChange={handleChange} color="secondary" />
+          <Switch
+            checked={!darkMode}
+            onChange={() => {
+              setDarkMode(!darkMode);
+            }}
+            color="secondary"
+          />
           <LightModeIcon />
         </Stack>
       </Toolbar>
