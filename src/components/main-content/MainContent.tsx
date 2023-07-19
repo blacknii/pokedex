@@ -2,8 +2,8 @@ import Regions from "./Regions";
 import Pokemons from "./Pokemons";
 import PokemonsSkeleton from "./PokemonsSkeleton";
 import Types from "./Types";
-import { usePokemonsData } from "../hooks/usePokemonsData";
-import { regions } from "../data/regions";
+import { usePokemonsData } from "../../hooks/usePokemonsData";
+import { regions } from "../../data/regions";
 import { Typography, Pagination, Stack, Box } from "@mui/material";
 import { useState } from "react";
 

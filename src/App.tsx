@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import MainContent from "./components/MainContent";
+import MainContent from "./components/main-content/MainContent";
 import { red } from "@mui/material/colors";
 import { pokemonTypesPalette } from "./data/pokemonTypesPalette";
 import { useState } from "react";
@@ -58,7 +58,9 @@ function App() {
       <CssBaseline />
       <Stack spacing={2} sx={{ alignItems: "center", height: "100vh" }}>
         <Header setDarkMode={setDarkMode} darkMode={darkMode} />
-        <MainContent />
+        <Box sx={{ flexGrow: "1" }}>
+          <MainContent />
+        </Box>
         <Footer />
       </Stack>
     </ThemeProvider>

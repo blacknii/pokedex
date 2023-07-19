@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Modal from "./Modal";
 import { useState } from "react";
-import { types } from "../data/types";
+import { types } from "../../data/types";
 
 interface Pokemon {
   id: number;

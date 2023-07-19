@@ -1,5 +1,5 @@
 import { Box, Chip } from "@mui/material";
-import { regions } from "../data/regions";
+import { regions } from "../../data/regions";
 
 interface Region {
   name: string;

@@ -1,5 +1,5 @@
 import { Box, Chip } from "@mui/material";
-import { types } from "../data/types";
+import { types } from "../../data/types";
 
 interface TypesProps {
   selectedTypes: string[];
