@@ -4,15 +4,15 @@ const Footer = () => {
   return (
     <AppBar sx={{ position: "static", alignItems: "center" }}>
       <Toolbar>
-        <Stack direction="row" sx={{ alignItems: "center" }}>
+        <Stack direction="row">
           <Typography
             sx={{
               fontSize: {
-                sm: 18,
-                xs: 15,
+                md: 18,
+                ex: 15,
               },
-              textAlign: "center",
             }}
+            component="div"
           >
             POKEDEX powered by{" "}
             <Link color="secondary" href="https://pokeapi.co/" target="_blank">

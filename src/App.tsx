@@ -12,6 +12,20 @@ import { red } from "@mui/material/colors";
 import { pokemonTypesPalette } from "./data/pokemonTypesPalette";
 import { useState } from "react";
 
+declare module "@mui/material/styles" {
+  interface PaletteOptions {
+    pokemonTypes?: PalettePokemonTypesOptions;
+  }
+
+  interface PalettePokemonTypesOptions {
+    chip?: {
+      fill?: string;
+      outline?: string;
+      contrastText?: string;
+    };
+  }
+}
+
 function App() {
   const prefersDarkMode =
     window.matchMedia &&
@@ -44,9 +58,7 @@ function App() {
       <CssBaseline />
       <Stack spacing={2} sx={{ alignItems: "center", height: "100vh" }}>
         <Header setDarkMode={setDarkMode} darkMode={darkMode} />
-        <Box sx={{ flexGrow: "1" }}>
-          <MainContent />
-        </Box>
+        <MainContent />
         <Footer />
       </Stack>
     </ThemeProvider>

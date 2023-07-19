@@ -64,7 +64,6 @@ const MainContent = () => {
       sx={{
         alignItems: "center",
         maxWidth: "1500px",
-        flexGrow: "1fr",
         height: "100%",
         padding: "0 20px",
       }}
