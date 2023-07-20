@@ -86,21 +86,24 @@ const Pokemons = ({ data }: PokemonProps) => {
                 sx={{ justifyContent: "center" }}
               >
                 {pokemon.types.map((textType) => {
+                  const foundType = types.find(
+                    (element) => element.name === textType
+                  );
+                  const iconWhite = foundType?.iconWhite;
+                  const bgColor = foundType
+                    ? `pokemonTypes.${foundType.name}.main`
+                    : "";
+                  const contrastText = foundType
+                    ? `pokemonTypes.${textType}.contrastText`
+                    : "";
                   return (
                     <Chip
                       key={textType}
                       label={textType}
-                      icon={
-                        types.find((element) => element.name === textType)
-                          .iconWhite
-                      }
+                      icon={iconWhite}
                       sx={{
-                        backgroundColor: `pokemonTypes.${
-                          types.find((element) => element.name === textType)
-                            .name
-                        }.main`,
-                        color: `pokemonTypes.${textType}.contrastText`,
-
+                        backgroundColor: bgColor,
+                        color: contrastText,
                         cursor: "pointer",
                       }}
                     />
