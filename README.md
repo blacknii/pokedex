@@ -9,9 +9,12 @@
 - [Demo](#demo)
 
 ## About the Project
+![pokedex](https://github.com/blacknii/pokedex/assets/42908977/94ecae93-23d3-41b5-9bbd-875905221719)
+</br>
 POKEDEX is a dynamic Pokémon directory built with React, MUI, TanStack Query, and Axios. The application uses the PokeAPI to display Pokémon as interactive cards. The user can sort these cards by region or type. POKEDEX also features a toggle for light and dark modes to enhance viewing pleasure.
 
 ## Features
+
 - Browse Pokémon: Check out a large database of Pokémon displayed as interactive cards.
 - Sort: Arrange the Pokémon by region or type to find your favorites.
 - Light and Dark Mode: Personalize your viewing experience with a light or dark aesthetic.
